@@ -23,7 +23,6 @@ public class Product_Testcase {
 		Login At = new Login(driver);
 		
 		At.Login("standard_user", "secret_sauce");
-		Thread.sleep(2000);
 		At.Submit();
 	}
 	
@@ -54,5 +53,11 @@ public class Product_Testcase {
 		//click.ClickonProduct(0);
 		click.ClickonProduct();
 	}
+	@AfterTest
+	void Close()
+	{
+		driver.close();
+	}
+	
 	
 }

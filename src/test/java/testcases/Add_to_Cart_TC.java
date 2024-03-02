@@ -23,7 +23,6 @@ public class Add_to_Cart_TC {
 		Login At = new Login(driver);
 		
 		At.Login("standard_user", "secret_sauce");
-		Thread.sleep(2000);
 		At.Submit();
 	}
 	@Test(priority=2)
@@ -40,8 +39,7 @@ public class Add_to_Cart_TC {
 		pp.AddToCart();
 		pp.RemoveBtn();;
 	}
-	
-	
+
 	@AfterTest
 	void close()
 	{

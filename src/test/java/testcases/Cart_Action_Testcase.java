@@ -20,7 +20,6 @@ public class Cart_Action_Testcase {
 			Login At = new Login(driver);
 			
 			At.Login("standard_user", "secret_sauce");
-			Thread.sleep(2000);
 		 	At.Submit();
 			
 	}
@@ -48,6 +47,7 @@ public class Cart_Action_Testcase {
 	{
 		driver.close();
 	}
+	
 
 		
 }

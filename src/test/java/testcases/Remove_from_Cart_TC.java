@@ -25,7 +25,6 @@ public class Remove_from_Cart_TC {
 		Login At = new Login(driver);
 		
 		At.Login("standard_user", "secret_sauce");
-		Thread.sleep(2000);
 		At.Submit();
 	}
 	

@@ -23,7 +23,6 @@ public class Backbtn_tc {
 		Login At = new Login(driver);
 		
 		At.Login("standard_user", "secret_sauce");
-		Thread.sleep(2000);
 		At.Submit();
 	}
 	@Test(priority=2)
@@ -39,4 +38,9 @@ public class Backbtn_tc {
 		Product_page pp = new Product_page(driver);
 		pp.redirectLink();
 	}
+	@AfterTest
+	void Close()
+	{
+		driver.close();
+		}
 }

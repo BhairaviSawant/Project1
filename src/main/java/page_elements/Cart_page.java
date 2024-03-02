@@ -1,15 +1,21 @@
 package page_elements;
 
-import org.openqa.selenium.By;
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class Cart_page {
 
 	private WebDriver driver;
+	WebDriverWait wait;
+	
+	
 	@FindBy(className= "shopping_cart_link" )
 	private WebElement cart_btn;
 	@FindBy(className= "shopping_cart_badge")
@@ -27,15 +33,17 @@ public class Cart_page {
 	{
 		this.driver = driver; 
 		PageFactory.initElements(driver,this);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 	}
 	
 	public void Checkout() throws InterruptedException
 	{	
 		cart_btn.click();
 		System.out.println("Count of Products : "+Prod_Count.getText());
-		Thread.sleep(2000);
+		
+		wait.until(ExpectedConditions.visibilityOf(CheckOut_btn));
 		CheckOut_btn.click();
-		Thread.sleep(2000);
+		wait.until(ExpectedConditions.visibilityOf(Page_Title));
 		// Prints title to verify if Checkout page  form is displayed
 		Assert.assertEquals(Page_Title.getText(),ExpectedTitle);
 		System.out.println("Page Title: "+Page_Title.getText());
@@ -44,9 +52,8 @@ public class Cart_page {
 	public void Removebtn() throws InterruptedException
 	{
 		cart_btn.click();
-		Thread.sleep(2000);
-		removeBtn.click();
-		Thread.sleep(2000);
+		wait.until(ExpectedConditions.visibilityOf(removeBtn));
+		
 	}
 	
 	

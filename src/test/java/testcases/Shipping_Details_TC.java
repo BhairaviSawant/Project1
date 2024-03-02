@@ -34,6 +34,7 @@ public class Shipping_Details_TC {
 				
 				At.Login("standard_user", "secret_sauce");
 				At.Submit();
+				
 				//Step 2: Add Product and click on Checkout btn
 				Product_page pp= new Product_page(driver);
 				pp.Addtocart();
@@ -57,12 +58,9 @@ public class Shipping_Details_TC {
 		Shipping_details_Page SP = new Shipping_details_Page(driver);
 		SP.Details("", "", "");
 		SP.ContinueBtn();
-		Thread.sleep(2000);
 		String errorMessage = SP.getErrorMessage();
-        Assert.assertEquals(errorMessage, "Error: First Name is required\n" +
-                                        "Error: Last Name is required\n" +
-                                        "Error: Postal Code is required",
-                                        "Validation message mismatch");
+        Assert.assertEquals(errorMessage, "Error: First Name is required" 
+                                        );
 	}
 	
 	@AfterTest

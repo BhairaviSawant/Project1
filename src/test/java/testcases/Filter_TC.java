@@ -22,7 +22,6 @@ public class Filter_TC {
 		Login At = new Login(driver);
 		
 		At.Login("standard_user", "secret_sauce");
-		Thread.sleep(2000);
 		At.Submit();	
     }
 
@@ -33,7 +32,6 @@ public class Filter_TC {
     	// Initialize Page Object
         Filters_Page Fp = new Filters_Page(driver);
         Fp.sortByPriceLowToHigh();
-        Thread.sleep(2000);
         // checking the first and last price
         double firstPrice = Double.parseDouble(driver.findElement(By.className("inventory_item_price")).getText().replace("$", ""));
         
@@ -44,7 +42,7 @@ public class Filter_TC {
     }
     
 
-    @AfterMethod
+    @AfterTest
     public void Close() {
        
         driver.quit();

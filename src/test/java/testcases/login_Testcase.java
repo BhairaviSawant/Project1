@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
@@ -34,7 +35,6 @@ public class login_Testcase {
 	    
 	    // Login Testcases
 		At.Login(email, pwd);
-		Thread.sleep(2000);
 		
 		if (email.equals("locked_out_user") && pwd.equals("secret_sauce")) {
             // Check for the error message
@@ -45,16 +45,10 @@ public class login_Testcase {
         }
 		else {
 		At.Submit();
-		Thread.sleep(2000);
 		driver.navigate().back();	
 		}		
 	}
 
-	@AfterTest
-	void Close()
-	{
-		driver.close();
-	}
 	
 	@DataProvider(name = "data_provider" )
 	Object[][] data() throws IOException {
@@ -64,5 +58,12 @@ public class login_Testcase {
 //		data_excel_read.data_read(path,"reg");
 		return data;
 	}
+	
+	@AfterTest
+	void Close()
+	{
+		driver.close();
+	}
+	
 
 }

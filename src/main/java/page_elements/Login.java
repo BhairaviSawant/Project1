@@ -38,11 +38,13 @@ public class Login {
 		passwd.clear();
 		passwd.sendKeys(fn);
 	}
-	public void Login(String Email, String pwd) {
+	public void Login(String Email, String pwd) 
+	{
 		Email_id.clear();
 		Email_id.sendKeys(Email);	
 		passwd.clear();
 		passwd.sendKeys(pwd);
+		
 	}
 	
 	public void Submit() {

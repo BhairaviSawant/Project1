@@ -3,13 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testcases.Social_handles_tc">
+      <class name="testcases.Product_Testcase">
         <methods>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-          <include name="redirecToSocialPage2"/>
+          <include name="initialize"/>
+          <include name="Click_on_product"/>
         </methods>
-      </class> <!-- testcases.Social_handles_tc -->
+      </class> <!-- testcases.Product_Testcase -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

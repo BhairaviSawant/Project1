@@ -5,13 +5,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 
 public class Inventory_page {
 	
 	private WebDriver driver;
+	WebDriverWait wait;
+
 	
 	@FindBy( xpath = "//div[@class='inventory_item_price']")
 	private  WebElement Price;
@@ -20,6 +25,7 @@ public class Inventory_page {
 	public Inventory_page(WebDriver driver){
 		this.driver = driver;
 		PageFactory.initElements(driver,this);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 	}
 
 	public int countProductImages() {
@@ -47,10 +53,10 @@ public class Inventory_page {
             String imageText = product.getText();
             System.out.println("Image Text: " + imageText);
             product.click();
-            Thread.sleep(2000);
-            driver.navigate().back();
-            Thread.sleep(2000);
-                 
+            wait.until(ExpectedConditions.urlContains("inventory-item.html")); 
+            // Wait until the URL contains 'product-details'
+
+            driver.navigate().back();                 
         }
     }
     
@@ -64,8 +70,7 @@ public void AddToCart() throws InterruptedException {
             String imageText = cart_btn.getText();
             System.out.println("Cart Action Button: " + imageText);
             cart_btn.click();          
-            Thread.sleep(2000);
-                 
+            // wait removed
         }
     }
 
@@ -79,8 +84,7 @@ public void RemoveBtn() throws InterruptedException {
             String imageText = cart_btn.getText();
             System.out.println("Cart Action Button :" + imageText);
             cart_btn.click();          
-            Thread.sleep(2000);
-                 
+         // wait removed                 
         }
     }
  

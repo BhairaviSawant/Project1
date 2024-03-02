@@ -3,6 +3,7 @@ package testcases;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -54,5 +55,11 @@ public class Billing_Page_TC {
         Assert.assertEquals(Cp.getTotal(), "Total: $32.39");
   
 	}
+	
+	@AfterTest
+	void Close()
+	{
+		driver.close();
+		}
 
 }
